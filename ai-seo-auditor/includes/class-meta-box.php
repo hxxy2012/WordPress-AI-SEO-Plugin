@@ -128,11 +128,23 @@ class AI_SEO_Meta_Box {
                     <?php _e('刷新结果', 'ai-seo-auditor'); ?>
                 </button>
 
+                <button
+                    type="button"
+                    id="show-checklist-btn"
+                    class="button button-secondary"
+                >
+                    <span class="dashicons dashicons-yes-alt"></span>
+                    <?php _e('SEO检查清单', 'ai-seo-auditor'); ?>
+                </button>
+
                 <?php
                 // 允许其他组件添加按钮
                 do_action('ai_seo_meta_box_actions', $post->ID);
                 ?>
             </div>
+
+            <!-- SEO检查清单 -->
+            <?php do_action('ai_seo_before_results', $post->ID); ?>
 
             <!-- 加载提示 -->
             <div class="ai-seo-loading" style="display: none;">

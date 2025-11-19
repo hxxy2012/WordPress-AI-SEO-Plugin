@@ -70,6 +70,8 @@ class AI_SEO_Auditor {
         require_once AI_SEO_PLUGIN_DIR . 'includes/class-quick-actions.php';
         require_once AI_SEO_PLUGIN_DIR . 'includes/class-trend-chart.php';
         require_once AI_SEO_PLUGIN_DIR . 'includes/class-report-generator.php';
+        require_once AI_SEO_PLUGIN_DIR . 'includes/class-seo-checklist.php';
+        require_once AI_SEO_PLUGIN_DIR . 'includes/class-settings-import-export.php';
     }
 
     /**
@@ -170,6 +172,8 @@ class AI_SEO_Auditor {
             AI_SEO_Quick_Actions::get_instance();
             AI_SEO_Trend_Chart::get_instance();
             AI_SEO_Report_Generator::get_instance();
+            AI_SEO_Checklist::get_instance();
+            AI_SEO_Settings_Import_Export::get_instance();
         }
 
         // 初始化定时任务（前后台都需要）
@@ -226,6 +230,16 @@ class AI_SEO_Auditor {
             AI_SEO_VERSION
         );
 
+        // 文章编辑页面加载检查清单样式
+        if ($hook === 'post.php' || $hook === 'post-new.php') {
+            wp_enqueue_style(
+                'ai-seo-checklist',
+                AI_SEO_PLUGIN_URL . 'assets/css/checklist.css',
+                array(),
+                AI_SEO_VERSION
+            );
+        }
+
         // 竞品分析页面加载专用样式
         if ($hook === 'ai-seo-auditor_page_ai-seo-competitor') {
             wp_enqueue_style(
@@ -252,6 +266,17 @@ class AI_SEO_Auditor {
             AI_SEO_VERSION,
             true
         );
+
+        // 文章编辑页面加载检查清单脚本
+        if ($hook === 'post.php' || $hook === 'post-new.php') {
+            wp_enqueue_script(
+                'ai-seo-checklist',
+                AI_SEO_PLUGIN_URL . 'assets/js/checklist.js',
+                array('jquery'),
+                AI_SEO_VERSION,
+                true
+            );
+        }
 
         // 竞品分析页面加载专用脚本
         if ($hook === 'ai-seo-auditor_page_ai-seo-competitor') {

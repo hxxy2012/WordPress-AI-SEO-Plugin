@@ -1,0 +1,357 @@
+/**
+ * AI SEO Auditor - 检查清单样式
+ */
+
+/* 检查清单容器 */
+.ai-seo-checklist-container {
+    margin: 20px 0;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.checklist-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    background: #f9f9f9;
+}
+
+.checklist-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+#run-checklist-btn,
+#show-checklist-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#run-checklist-btn .dashicons,
+#show-checklist-btn .dashicons {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+}
+
+/* 加载状态 */
+.checklist-loading {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.checklist-loading .spinner {
+    float: none;
+    margin: 0 auto 15px;
+}
+
+/* 摘要 */
+.checklist-summary {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 25px;
+    background: linear-gradient(135deg, #f5f5f5 0%, #fff 100%);
+    border-bottom: 1px solid #eee;
+}
+
+.summary-score {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.score-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 6px solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+}
+
+.summary-score.score-excellent .score-circle {
+    border-color: #46b450;
+    color: #46b450;
+}
+
+.summary-score.score-good .score-circle {
+    border-color: #00a0d2;
+    color: #00a0d2;
+}
+
+.summary-score.score-fair .score-circle {
+    border-color: #ffb900;
+    color: #ffb900;
+}
+
+.summary-score.score-poor .score-circle {
+    border-color: #dc3232;
+    color: #dc3232;
+}
+
+.score-value {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.score-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.summary-stats {
+    display: flex;
+    gap: 30px;
+    flex: 1;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #666;
+    font-weight: 500;
+}
+
+.stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+}
+
+.stat-item.passed .stat-value {
+    color: #46b450;
+}
+
+.stat-item.failed .stat-value {
+    color: #dc3232;
+}
+
+/* 检查项列表 */
+.checklist-items {
+    padding: 10px;
+}
+
+.checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border-left: 4px solid;
+    background: #fafafa;
+    transition: all 0.2s;
+}
+
+.checklist-item:hover {
+    background: #f5f5f5;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.checklist-item-passed {
+    border-left-color: #46b450;
+}
+
+.checklist-item-failed {
+    border-left-color: #dc3232;
+}
+
+.checklist-item-warning {
+    border-left-color: #ffb900;
+}
+
+.checklist-item-info {
+    border-left-color: #00a0d2;
+}
+
+.item-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item-icon .dashicons {
+    width: 24px;
+    height: 24px;
+    font-size: 24px;
+}
+
+.checklist-item-passed .item-icon {
+    color: #46b450;
+}
+
+.checklist-item-failed .item-icon {
+    color: #dc3232;
+}
+
+.checklist-item-warning .item-icon {
+    color: #ffb900;
+}
+
+.checklist-item-info .item-icon {
+    color: #00a0d2;
+}
+
+.item-content {
+    flex: 1;
+}
+
+.item-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.item-message {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.item-actions {
+    flex-shrink: 0;
+}
+
+.quick-fix-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    padding: 4px 10px;
+    height: auto;
+    line-height: 1.4;
+}
+
+.quick-fix-btn .dashicons {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+}
+
+.quick-fix-btn:hover {
+    background: #0073aa;
+    color: #fff;
+    border-color: #0073aa;
+}
+
+/* 响应式设计 */
+@media screen and (max-width: 782px) {
+    .checklist-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    #run-checklist-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .checklist-summary {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .summary-stats {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .checklist-item {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .item-actions {
+        width: 100%;
+    }
+
+    .quick-fix-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .summary-stats {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .stat-item {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .stat-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .stat-value {
+        font-size: 24px;
+    }
+}
+
+/* 动画 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.checklist-item {
+    animation: fadeInUp 0.3s ease;
+}
+
+.checklist-item:nth-child(1) { animation-delay: 0.05s; }
+.checklist-item:nth-child(2) { animation-delay: 0.1s; }
+.checklist-item:nth-child(3) { animation-delay: 0.15s; }
+.checklist-item:nth-child(4) { animation-delay: 0.2s; }
+.checklist-item:nth-child(5) { animation-delay: 0.25s; }
+.checklist-item:nth-child(6) { animation-delay: 0.3s; }
+.checklist-item:nth-child(7) { animation-delay: 0.35s; }
+.checklist-item:nth-child(8) { animation-delay: 0.4s; }
+.checklist-item:nth-child(9) { animation-delay: 0.45s; }
+.checklist-item:nth-child(10) { animation-delay: 0.5s; }
+
+/* 展开按钮 */
+#show-checklist-btn {
+    margin: 15px 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}

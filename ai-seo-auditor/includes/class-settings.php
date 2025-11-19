@@ -207,6 +207,9 @@ class AI_SEO_Settings {
                     <h2><?php _e('统计信息', 'ai-seo-auditor'); ?></h2>
                     <?php $this->render_stats(); ?>
                 </div>
+
+                <!-- 导入导出 -->
+                <?php do_action('ai_seo_settings_page_after'); ?>
             </div>
         </div>
         <?php
