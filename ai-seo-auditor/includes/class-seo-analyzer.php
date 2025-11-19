@@ -67,6 +67,26 @@ class AI_SEO_Analyzer {
             return $result;
         }
 
+        // 添加图片SEO分析
+        $image_seo = AI_SEO_Image_SEO::get_instance();
+        $image_analysis = $image_seo->analyze_post_images($post_id);
+        if (!is_wp_error($image_analysis)) {
+            $result['images'] = $image_analysis;
+        }
+
+        // 添加社交媒体优化分析
+        $social_media = AI_SEO_Social_Media::get_instance();
+        $social_analysis = $social_media->analyze_social_media($post_id);
+        if (!is_wp_error($social_analysis)) {
+            $result['social_media'] = $social_analysis;
+        }
+
+        // 添加外链分析
+        $result['external_links'] = $this->analyze_external_links($post->post_content);
+
+        // 重新计算总分（考虑新增的维度）
+        $result['overall_score'] = $this->recalculate_overall_score($result);
+
         // 保存分析结果
         $this->save_audit_results($post_id, $result);
 
@@ -452,5 +472,112 @@ class AI_SEO_Analyzer {
         }
 
         return $results;
+    }
+
+    /**
+     * 分析外链质量
+     *
+     * @param string $content HTML内容
+     * @return array 外链分析结果
+     */
+    private function analyze_external_links($content) {
+        $analysis = array(
+            'total_links' => 0,
+            'external_links' => 0,
+            'nofollow_links' => 0,
+            'dofollow_links' => 0,
+            'broken_links' => array(),
+            'score' => 100,
+            'issues' => array(),
+            'suggestions' => array()
+        );
+
+        // 提取所有链接
+        preg_match_all('/<a\s+[^>]*href=["\'](.*?)["\'][^>]*>(.*?)<\/a>/i', $content, $matches);
+
+        if (empty($matches[1])) {
+            $analysis['suggestions'][] = __('考虑添加相关的外部链接以提供更多参考资源', 'ai-seo-auditor');
+            return $analysis;
+        }
+
+        $site_url = get_site_url();
+        $analysis['total_links'] = count($matches[1]);
+
+        foreach ($matches[0] as $index => $full_tag) {
+            $url = $matches[1][$index];
+
+            // 检查是否是外链
+            if (strpos($url, $site_url) === false && strpos($url, 'http') === 0) {
+                $analysis['external_links']++;
+
+                // 检查nofollow
+                if (strpos($full_tag, 'nofollow') !== false) {
+                    $analysis['nofollow_links']++;
+                } else {
+                    $analysis['dofollow_links']++;
+                }
+            }
+        }
+
+        // 生成问题和建议
+        if ($analysis['external_links'] > 10) {
+            $analysis['issues'][] = sprintf(
+                __('外链数量较多（%d个），可能影响页面权重', 'ai-seo-auditor'),
+                $analysis['external_links']
+            );
+            $analysis['score'] -= 10;
+        }
+
+        if ($analysis['dofollow_links'] > $analysis['nofollow_links'] && $analysis['external_links'] > 5) {
+            $analysis['issues'][] = __('建议为部分外链添加nofollow属性', 'ai-seo-auditor');
+            $analysis['suggestions'][] = __('对不重要的外链使用rel="nofollow"以保护页面权重', 'ai-seo-auditor');
+            $analysis['score'] -= 5;
+        }
+
+        if (empty($analysis['issues'])) {
+            $analysis['suggestions'][] = __('外链使用合理', 'ai-seo-auditor');
+        }
+
+        $analysis['score'] = max(0, $analysis['score']);
+
+        return $analysis;
+    }
+
+    /**
+     * 重新计算总分
+     *
+     * @param array $result 分析结果
+     * @return int 总分
+     */
+    private function recalculate_overall_score($result) {
+        $scores = array();
+        $weights = array(
+            'title' => 0.15,
+            'meta_description' => 0.10,
+            'keyword' => 0.15,
+            'content' => 0.20,
+            'readability' => 0.15,
+            'technical' => 0.10,
+            'images' => 0.08,
+            'social_media' => 0.05,
+            'external_links' => 0.02
+        );
+
+        foreach ($weights as $key => $weight) {
+            if (isset($result[$key]['score'])) {
+                $scores[$key] = $result[$key]['score'] * $weight;
+            }
+        }
+
+        // 如果某些维度不存在，重新分配权重
+        $total_weight = array_sum(array_intersect_key($weights, $scores));
+
+        if ($total_weight > 0) {
+            $weighted_score = array_sum($scores) / $total_weight * 100;
+            return round($weighted_score);
+        }
+
+        // 如果没有任何评分数据，返回原始overall_score
+        return isset($result['overall_score']) ? $result['overall_score'] : 0;
     }
 }

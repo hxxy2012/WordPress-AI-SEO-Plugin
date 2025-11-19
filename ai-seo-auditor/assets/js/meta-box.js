@@ -25,6 +25,9 @@
 
             // 应用Meta描述建议
             $(document).on('click', '.apply-meta-btn', this.applyMetaSuggestion);
+
+            // 导出HTML报告
+            $(document).on('click', '.ai-seo-export-report', this.exportReport.bind(this));
         },
 
         checkApiKey: function() {
@@ -354,6 +357,48 @@
         showSuccessNotice: function(message) {
             // 可以添加WordPress通知
             console.log('Success:', message);
+        },
+
+        exportReport: function(e) {
+            e.preventDefault();
+
+            const postId = $(e.currentTarget).data('post-id');
+
+            if (!postId) {
+                alert('无效的文章ID');
+                return;
+            }
+
+            // 显示加载中
+            const $button = $(e.currentTarget);
+            const originalText = $button.html();
+            $button.html('<span class="dashicons dashicons-update spin"></span> 生成中...').prop('disabled', true);
+
+            $.ajax({
+                url: ajaxurl,
+                type: 'POST',
+                data: {
+                    action: 'ai_seo_generate_report',
+                    nonce: aiSeoData.nonce,
+                    post_id: postId
+                },
+                success: function(response) {
+                    if (response.success) {
+                        // 在新窗口打开HTML报告
+                        const reportWindow = window.open('', '_blank');
+                        reportWindow.document.write(response.data.html);
+                        reportWindow.document.close();
+                    } else {
+                        alert(response.data.message || '生成报告失败');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert('生成报告失败: ' + error);
+                },
+                complete: function() {
+                    $button.html(originalText).prop('disabled', false);
+                }
+            });
         }
     };
 

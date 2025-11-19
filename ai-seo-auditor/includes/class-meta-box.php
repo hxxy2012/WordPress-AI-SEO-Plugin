@@ -127,6 +127,11 @@ class AI_SEO_Meta_Box {
                     <span class="dashicons dashicons-update"></span>
                     <?php _e('刷新结果', 'ai-seo-auditor'); ?>
                 </button>
+
+                <?php
+                // 允许其他组件添加按钮
+                do_action('ai_seo_meta_box_actions', $post->ID);
+                ?>
             </div>
 
             <!-- 加载提示 -->

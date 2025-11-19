@@ -67,6 +67,9 @@ class AI_SEO_Auditor {
         require_once AI_SEO_PLUGIN_DIR . 'includes/class-scheduler.php';
         require_once AI_SEO_PLUGIN_DIR . 'includes/class-image-seo.php';
         require_once AI_SEO_PLUGIN_DIR . 'includes/class-social-media.php';
+        require_once AI_SEO_PLUGIN_DIR . 'includes/class-quick-actions.php';
+        require_once AI_SEO_PLUGIN_DIR . 'includes/class-trend-chart.php';
+        require_once AI_SEO_PLUGIN_DIR . 'includes/class-report-generator.php';
     }
 
     /**
@@ -164,10 +167,18 @@ class AI_SEO_Auditor {
             AI_SEO_Competitor_Analysis::get_instance();
             AI_SEO_Image_SEO::get_instance();
             AI_SEO_Social_Media::get_instance();
+            AI_SEO_Quick_Actions::get_instance();
+            AI_SEO_Trend_Chart::get_instance();
+            AI_SEO_Report_Generator::get_instance();
         }
 
         // 初始化定时任务（前后台都需要）
         AI_SEO_Scheduler::get_instance();
+
+        // 前台也初始化快捷代码
+        if (!is_admin()) {
+            AI_SEO_Quick_Actions::get_instance();
+        }
     }
 
     /**
@@ -192,7 +203,8 @@ class AI_SEO_Auditor {
             'toplevel_page_ai-seo-auditor',
             'ai-seo-auditor_page_ai-seo-batch-audit',
             'ai-seo-auditor_page_ai-seo-competitor',
-            'ai-seo-auditor_page_ai-seo-scheduler'
+            'ai-seo-auditor_page_ai-seo-scheduler',
+            'ai-seo-auditor_page_ai-seo-trends'
         );
 
         if (!in_array($hook, $allowed_pages)) {

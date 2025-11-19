@@ -362,3 +362,17 @@
 .ai-seo-card:nth-child(4) { animation-delay: 0.2s; }
 .ai-seo-card:nth-child(5) { animation-delay: 0.25s; }
 .ai-seo-card:nth-child(6) { animation-delay: 0.3s; }
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spin {
+    animation: spin 1s linear infinite;
+    display: inline-block;
+}
