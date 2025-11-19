@@ -1,0 +1,219 @@
+# AI SEO Auditor POT File
+# Copyright (C) 2024 AI SEO Team
+# This file is distributed under the GPL v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: AI SEO Auditor 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/hxxy2012/WordPress-AI-SEO-Plugin/issues\n"
+"POT-Creation-Date: 2024-11-19 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ai-seo-auditor.php
+msgid "AI SEO Auditor"
+msgstr ""
+
+msgid "SEO analysis and optimization powered by Claude AI"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Batch Audit"
+msgstr ""
+
+#: includes/class-api-handler.php
+msgid "Claude API Key not configured"
+msgstr ""
+
+msgid "API connection successful"
+msgstr ""
+
+msgid "API connection failed"
+msgstr ""
+
+#: includes/class-seo-analyzer.php
+msgid "Post not found"
+msgstr ""
+
+msgid "Analyzing content..."
+msgstr ""
+
+msgid "Analysis complete"
+msgstr ""
+
+#: includes/class-meta-box.php
+msgid "AI SEO Audit"
+msgstr ""
+
+msgid "Target Keyword (Optional):"
+msgstr ""
+
+msgid "Start SEO Audit"
+msgstr ""
+
+msgid "Refresh Results"
+msgstr ""
+
+msgid "Analyzing... Please wait"
+msgstr ""
+
+msgid "Overall SEO Score"
+msgstr ""
+
+msgid "Excellent"
+msgstr ""
+
+msgid "Good"
+msgstr ""
+
+msgid "Needs Improvement"
+msgstr ""
+
+msgid "Critical"
+msgstr ""
+
+msgid "Title Optimization"
+msgstr ""
+
+msgid "Meta Description"
+msgstr ""
+
+msgid "Keyword Usage"
+msgstr ""
+
+msgid "Content Quality"
+msgstr ""
+
+msgid "Readability"
+msgstr ""
+
+msgid "Technical SEO"
+msgstr ""
+
+msgid "Issues Found:"
+msgstr ""
+
+msgid "Suggestions:"
+msgstr ""
+
+msgid "Apply Selected Title"
+msgstr ""
+
+msgid "Apply Selected Description"
+msgstr ""
+
+#: includes/class-settings.php
+msgid "API Configuration"
+msgstr ""
+
+msgid "Audit Rules"
+msgstr ""
+
+msgid "Claude API Key"
+msgstr ""
+
+msgid "Test API Connection"
+msgstr ""
+
+msgid "AI Model"
+msgstr ""
+
+msgid "Keyword Density Range (%)"
+msgstr ""
+
+msgid "Title Length Range"
+msgstr ""
+
+msgid "Meta Description Length Range"
+msgstr ""
+
+msgid "Minimum Word Count"
+msgstr ""
+
+msgid "Analysis Language"
+msgstr ""
+
+msgid "Chinese"
+msgstr ""
+
+msgid "English"
+msgstr ""
+
+msgid "Bilingual"
+msgstr ""
+
+msgid "Save Settings"
+msgstr ""
+
+msgid "Settings Saved"
+msgstr ""
+
+#: includes/class-admin-ui.php
+msgid "Batch SEO Audit"
+msgstr ""
+
+msgid "All Published Posts"
+msgstr ""
+
+msgid "By Category"
+msgstr ""
+
+msgid "By Tag"
+msgstr ""
+
+msgid "Unaudited Posts Only"
+msgstr ""
+
+msgid "Posts with Score < 60"
+msgstr ""
+
+msgid "Start Batch Audit"
+msgstr ""
+
+msgid "Audit Progress"
+msgstr ""
+
+msgid "Total:"
+msgstr ""
+
+msgid "Success:"
+msgstr ""
+
+msgid "Failed:"
+msgstr ""
+
+msgid "Export CSV Report"
+msgstr ""
+
+msgid "View Detailed Results"
+msgstr ""
+
+msgid "Average SEO Score"
+msgstr ""
+
+msgid "Audited Posts"
+msgstr ""
+
+msgid "Needs Optimization"
+msgstr ""
+
+msgid "Top 5 Posts Needing Optimization"
+msgstr ""
+
+msgid "Post Title"
+msgstr ""
+
+msgid "SEO Score"
+msgstr ""
+
+msgid "Actions"
+msgstr ""
+
+msgid "Edit"
+msgstr ""

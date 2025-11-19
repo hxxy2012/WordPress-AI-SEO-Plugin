@@ -63,6 +63,10 @@ class AI_SEO_Auditor {
         require_once AI_SEO_PLUGIN_DIR . 'includes/class-meta-box.php';
         require_once AI_SEO_PLUGIN_DIR . 'includes/class-settings.php';
         require_once AI_SEO_PLUGIN_DIR . 'includes/class-admin-ui.php';
+        require_once AI_SEO_PLUGIN_DIR . 'includes/class-competitor-analysis.php';
+        require_once AI_SEO_PLUGIN_DIR . 'includes/class-scheduler.php';
+        require_once AI_SEO_PLUGIN_DIR . 'includes/class-image-seo.php';
+        require_once AI_SEO_PLUGIN_DIR . 'includes/class-social-media.php';
     }
 
     /**
@@ -157,7 +161,13 @@ class AI_SEO_Auditor {
             AI_SEO_Settings::get_instance();
             AI_SEO_Admin_UI::get_instance();
             AI_SEO_Meta_Box::get_instance();
+            AI_SEO_Competitor_Analysis::get_instance();
+            AI_SEO_Image_SEO::get_instance();
+            AI_SEO_Social_Media::get_instance();
         }
+
+        // 初始化定时任务（前后台都需要）
+        AI_SEO_Scheduler::get_instance();
     }
 
     /**
@@ -180,7 +190,9 @@ class AI_SEO_Auditor {
             'post.php',
             'post-new.php',
             'toplevel_page_ai-seo-auditor',
-            'ai-seo-auditor_page_ai-seo-batch-audit'
+            'ai-seo-auditor_page_ai-seo-batch-audit',
+            'ai-seo-auditor_page_ai-seo-competitor',
+            'ai-seo-auditor_page_ai-seo-scheduler'
         );
 
         if (!in_array($hook, $allowed_pages)) {
@@ -202,6 +214,16 @@ class AI_SEO_Auditor {
             AI_SEO_VERSION
         );
 
+        // 竞品分析页面加载专用样式
+        if ($hook === 'ai-seo-auditor_page_ai-seo-competitor') {
+            wp_enqueue_style(
+                'ai-seo-competitor',
+                AI_SEO_PLUGIN_URL . 'assets/css/competitor.css',
+                array(),
+                AI_SEO_VERSION
+            );
+        }
+
         // 加载JS
         wp_enqueue_script(
             'ai-seo-admin',
@@ -218,6 +240,17 @@ class AI_SEO_Auditor {
             AI_SEO_VERSION,
             true
         );
+
+        // 竞品分析页面加载专用脚本
+        if ($hook === 'ai-seo-auditor_page_ai-seo-competitor') {
+            wp_enqueue_script(
+                'ai-seo-competitor',
+                AI_SEO_PLUGIN_URL . 'assets/js/competitor.js',
+                array('jquery'),
+                AI_SEO_VERSION,
+                true
+            );
+        }
 
         // 传递数据给JS
         wp_localize_script('ai-seo-meta-box', 'aiSeoData', array(

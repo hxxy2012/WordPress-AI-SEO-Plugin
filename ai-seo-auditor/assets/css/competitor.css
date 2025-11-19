@@ -1,0 +1,342 @@
+/**
+ * AI SEO Auditor - 竞品分析样式
+ */
+
+/* ========== 竞品分析容器 ========== */
+.ai-seo-competitor-container {
+    max-width: 1200px;
+}
+
+/* ========== 输入区域 ========== */
+.competitor-input-section {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ccd0d4;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+/* ========== 加载和错误提示 ========== */
+.competitor-loading,
+.competitor-error {
+    background: #fff;
+    padding: 30px;
+    margin-bottom: 20px;
+    border: 1px solid #ccd0d4;
+    text-align: center;
+}
+
+.competitor-loading .spinner {
+    float: none;
+    margin: 0 auto 15px;
+}
+
+/* ========== 结果区域 ========== */
+.competitor-results {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ccd0d4;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+.results-content h3 {
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #0073aa;
+}
+
+/* ========== 竞品卡片 ========== */
+.competitor-card {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.competitor-score {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 8px;
+    color: #fff;
+}
+
+.competitor-score .score-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+}
+
+.competitor-score .score-number {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.competitor-score .score-total {
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+.competitor-score .score-info h4 {
+    margin: 0 0 5px 0;
+    color: #fff;
+}
+
+.competitor-score .score-info p {
+    margin: 0;
+    opacity: 0.9;
+    font-size: 14px;
+}
+
+/* ========== 优势/弱点/机会 ========== */
+.competitor-strengths,
+.competitor-weaknesses,
+.competitor-opportunities,
+.competitor-recommendations {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.competitor-strengths {
+    background: #d4edda;
+    border-left: 4px solid #28a745;
+}
+
+.competitor-weaknesses {
+    background: #f8d7da;
+    border-left: 4px solid #dc3545;
+}
+
+.competitor-opportunities {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+}
+
+.competitor-recommendations {
+    background: #d1ecf1;
+    border-left: 4px solid #17a2b8;
+}
+
+.competitor-strengths h5,
+.competitor-weaknesses h5,
+.competitor-opportunities h5,
+.competitor-recommendations h5 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.competitor-strengths ul,
+.competitor-weaknesses ul,
+.competitor-opportunities ul,
+.competitor-recommendations ul {
+    margin: 0;
+    padding-left: 25px;
+}
+
+.competitor-strengths li,
+.competitor-weaknesses li,
+.competitor-opportunities li,
+.competitor-recommendations li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+/* ========== 对比分析 ========== */
+.comparison-section {
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 2px solid #e5e5e5;
+}
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.comparison-item {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.comparison-item h5 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #23282d;
+}
+
+/* ========== 评分条 ========== */
+.score-bar-container {
+    margin-top: 10px;
+}
+
+.score-bar-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.score-bar-row:last-child {
+    margin-bottom: 0;
+}
+
+.score-label {
+    width: 100px;
+    font-size: 13px;
+    color: #666;
+}
+
+.score-bar {
+    flex: 1;
+    height: 24px;
+    background: #e9ecef;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 0 10px;
+}
+
+.score-bar-fill {
+    height: 100%;
+    transition: width 0.5s ease;
+}
+
+.score-bar-fill.score-excellent {
+    background: linear-gradient(90deg, #28a745, #34ce57);
+}
+
+.score-bar-fill.score-good {
+    background: linear-gradient(90deg, #ffc107, #ffdb4d);
+}
+
+.score-bar-fill.score-fair {
+    background: linear-gradient(90deg, #ff9800, #ffb84d);
+}
+
+.score-bar-fill.score-poor {
+    background: linear-gradient(90deg, #dc3545, #ff4d5e);
+}
+
+.score-value {
+    width: 40px;
+    text-align: right;
+    font-weight: 600;
+    font-size: 14px;
+    color: #23282d;
+}
+
+/* ========== 对比总结 ========== */
+.comparison-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.advantages,
+.disadvantages {
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.advantages {
+    background: #d4edda;
+    border-left: 4px solid #28a745;
+}
+
+.disadvantages {
+    background: #f8d7da;
+    border-left: 4px solid #dc3545;
+}
+
+.advantages h5,
+.disadvantages h5 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.advantages ul,
+.disadvantages ul {
+    margin: 0;
+    padding-left: 25px;
+}
+
+.advantages li,
+.disadvantages li {
+    margin-bottom: 6px;
+}
+
+/* ========== 响应式设计 ========== */
+@media screen and (max-width: 782px) {
+    .competitor-score {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .competitor-score .score-circle {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .comparison-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .comparison-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .score-bar-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .score-label {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .score-bar {
+        margin: 0 0 5px 0;
+    }
+
+    .score-value {
+        width: 100%;
+        text-align: left;
+    }
+}
+
+/* ========== 动画效果 ========== */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.competitor-card,
+.comparison-section {
+    animation: slideIn 0.5s ease;
+}
