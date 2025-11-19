@@ -1,0 +1,394 @@
+/**
+ * AI SEO Auditor - 通知中心样式
+ */
+
+/* 通知页面容器 */
+.ai-seo-notifications-page {
+    max-width: 1200px;
+}
+
+.ai-seo-notifications-page h1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#mark-all-read-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* 统计卡片 */
+.notification-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f0;
+    flex-shrink: 0;
+}
+
+.stat-icon .dashicons {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+    color: #666;
+}
+
+.stat-card.unread .stat-icon {
+    background: #e5f5fa;
+}
+
+.stat-card.unread .stat-icon .dashicons {
+    color: #00a0d2;
+}
+
+.stat-card.warnings .stat-icon {
+    background: #fff9e6;
+}
+
+.stat-card.warnings .stat-icon .dashicons {
+    color: #ffb900;
+}
+
+.stat-card.improvements .stat-icon {
+    background: #f0f9ff;
+}
+
+.stat-card.improvements .stat-icon .dashicons {
+    color: #0073aa;
+}
+
+.stat-content {
+    flex: 1;
+}
+
+.stat-value {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 13px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+/* 通知容器 */
+.notifications-container {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* 空状态 */
+.no-notifications {
+    padding: 60px 20px;
+    text-align: center;
+    color: #666;
+}
+
+.no-notifications .dashicons {
+    font-size: 80px;
+    width: 80px;
+    height: 80px;
+    color: #46b450;
+    margin-bottom: 20px;
+}
+
+.no-notifications p {
+    font-size: 18px;
+    margin: 0;
+}
+
+/* 通知列表 */
+.notifications-list {
+    padding: 0;
+}
+
+/* 通知项 */
+.notification-item {
+    display: flex;
+    gap: 15px;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    transition: background 0.2s;
+    position: relative;
+}
+
+.notification-item:last-child {
+    border-bottom: none;
+}
+
+.notification-item:hover {
+    background: #f9f9f9;
+}
+
+.notification-unread {
+    background: #f0f9ff;
+    border-left: 4px solid #00a0d2;
+}
+
+.notification-unread:hover {
+    background: #e5f5fa;
+}
+
+.notification-read {
+    opacity: 0.75;
+}
+
+/* 通知图标 */
+.notification-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 5px;
+}
+
+.notification-info .notification-icon {
+    background: #e5f5fa;
+}
+
+.notification-info .notification-icon .dashicons {
+    color: #00a0d2;
+}
+
+.notification-success .notification-icon {
+    background: #ecf7ed;
+}
+
+.notification-success .notification-icon .dashicons {
+    color: #46b450;
+}
+
+.notification-warning .notification-icon {
+    background: #fff9e6;
+}
+
+.notification-warning .notification-icon .dashicons {
+    color: #ffb900;
+}
+
+.notification-error .notification-icon {
+    background: #ffeaea;
+}
+
+.notification-error .notification-icon .dashicons {
+    color: #dc3232;
+}
+
+.notification-icon .dashicons {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+}
+
+/* 通知内容 */
+.notification-content {
+    flex: 1;
+}
+
+.notification-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+    gap: 15px;
+}
+
+.notification-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    line-height: 1.4;
+}
+
+.notification-time {
+    font-size: 12px;
+    color: #999;
+    white-space: nowrap;
+}
+
+.notification-message {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.notification-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.notification-actions .button {
+    font-size: 13px;
+    padding: 4px 12px;
+    height: auto;
+    line-height: 1.4;
+}
+
+/* 忽略按钮 */
+.notification-dismiss {
+    flex-shrink: 0;
+}
+
+.dismiss-notification-btn {
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    color: #999;
+    transition: color 0.2s;
+    opacity: 0;
+}
+
+.notification-item:hover .dismiss-notification-btn {
+    opacity: 1;
+}
+
+.dismiss-notification-btn:hover {
+    color: #dc3232;
+}
+
+.dismiss-notification-btn .dashicons {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+}
+
+/* 动画 */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.notification-item {
+    animation: slideInRight 0.3s ease;
+}
+
+.notification-item:nth-child(1) { animation-delay: 0.05s; }
+.notification-item:nth-child(2) { animation-delay: 0.1s; }
+.notification-item:nth-child(3) { animation-delay: 0.15s; }
+.notification-item:nth-child(4) { animation-delay: 0.2s; }
+.notification-item:nth-child(5) { animation-delay: 0.25s; }
+
+/* 响应式设计 */
+@media screen and (max-width: 782px) {
+    .notification-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .ai-seo-notifications-page h1 {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    #mark-all-read-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .notification-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .notification-item {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .notification-icon {
+        align-self: flex-start;
+    }
+
+    .notification-actions {
+        width: 100%;
+    }
+
+    .notification-actions .button {
+        flex: 1;
+    }
+
+    .dismiss-notification-btn {
+        opacity: 1;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+}
+
+/* 加载状态 */
+.notifications-loading {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.notifications-loading .spinner {
+    float: none;
+    margin: 0 auto;
+}
+
+/* 通知淡出效果 */
+.notification-item.dismissing {
+    animation: fadeOut 0.3s ease forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+}

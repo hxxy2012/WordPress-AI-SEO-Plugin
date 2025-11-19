@@ -102,6 +102,24 @@
 - 📦 JSON格式备份
 - 🔄 完美的站点迁移解决方案
 
+### 通知中心 🆕
+- 🔔 智能SEO改进提醒
+- 📊 实时通知统计
+- 🎯 自动检测低分文章
+- ⚠️ 缺失Meta描述提醒
+- 🖼️ 特色图片检查提醒
+- 📱 管理栏快速访问
+- 📧 每日自动检查任务
+
+### REST API集成 🆕
+- 🔌 完整的REST API端点
+- 📡 第三方应用集成支持
+- 🔐 WordPress标准认证
+- 📊 获取评分和趋势数据
+- ⚡ 远程触发审计
+- 📈 实时统计API
+- 🔄 批量操作支持
+
 ## 📋 系统要求
 
 - WordPress 6.0 或更高版本
@@ -290,6 +308,90 @@
 6. 确认覆盖现有配置
 7. 页面自动刷新，设置生效
 
+### 通知中心 🆕
+
+1. 查看管理栏的铃铛图标查看未读通知数量
+2. 点击铃铛图标查看最近3条通知
+3. 进入 `AI SEO Auditor` > `通知中心` 查看全部
+4. 查看通知统计：
+   - 总通知数量
+   - 未读通知
+   - 警告数量
+   - 待改进项目
+5. 点击通知查看详情并处理
+6. 使用 `全部标记为已读` 批量处理
+7. 点击忽略按钮隐藏不需要的通知
+
+**自动通知类型**：
+- 低分文章提醒（评分<60）
+- 缺少Meta描述
+- 缺少特色图片
+- 审计完成通知
+
+### REST API使用 🆕
+
+基础URL：`https://your-site.com/wp-json/ai-seo/v1/`
+
+#### 认证
+使用WordPress标准认证（Application Passwords或Cookie）
+
+#### 端点列表
+
+**获取文章评分**
+```
+GET /posts/{id}/score
+```
+
+**分析文章**
+```
+POST /posts/{id}/analyze
+```
+
+**批量获取评分**
+```
+GET /posts/scores?ids[]=1&ids[]=2
+GET /posts/scores?limit=20
+```
+
+**获取趋势数据**
+```
+GET /trends?post_id=123&days=30
+GET /trends?days=90
+```
+
+**获取统计**
+```
+GET /stats
+```
+
+**运行检查清单**
+```
+GET /posts/{id}/checklist
+```
+
+**获取报告**
+```
+GET /posts/{id}/report?format=json
+GET /posts/{id}/report?format=html
+```
+
+**更新设置**
+```
+POST /settings
+Content-Type: application/json
+
+{
+  "min_word_count": 500,
+  "keyword_density_min": 1
+}
+```
+
+**获取通知**
+```
+GET /notifications
+GET /notifications?unread_only=true
+```
+
 ### 查看统计数据
 
 #### 仪表盘Widget
@@ -464,6 +566,8 @@ AI生成的标题和Meta描述通常质量很高，可以直接应用或稍作�
 - 🆕 WordPress快捷代码（3个）
 - 🆕 文章列表快速操作
 - 🆕 设置导入导出功能
+- 🆕 通知中心和智能提醒系统
+- 🆕 完整的REST API支持（10个端点）
 - 🆕 优化的API Prompt（更准确的分析）
 - 🆕 完整的卸载清理脚本
 - 🆕 多语言支持文件(.pot)

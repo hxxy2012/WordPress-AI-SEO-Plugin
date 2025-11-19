@@ -72,6 +72,8 @@ class AI_SEO_Auditor {
         require_once AI_SEO_PLUGIN_DIR . 'includes/class-report-generator.php';
         require_once AI_SEO_PLUGIN_DIR . 'includes/class-seo-checklist.php';
         require_once AI_SEO_PLUGIN_DIR . 'includes/class-settings-import-export.php';
+        require_once AI_SEO_PLUGIN_DIR . 'includes/class-notification-center.php';
+        require_once AI_SEO_PLUGIN_DIR . 'includes/class-rest-api.php';
     }
 
     /**
@@ -174,10 +176,14 @@ class AI_SEO_Auditor {
             AI_SEO_Report_Generator::get_instance();
             AI_SEO_Checklist::get_instance();
             AI_SEO_Settings_Import_Export::get_instance();
+            AI_SEO_Notification_Center::get_instance();
         }
 
         // 初始化定时任务（前后台都需要）
         AI_SEO_Scheduler::get_instance();
+
+        // 初始化REST API（前后台都需要）
+        AI_SEO_REST_API::get_instance();
 
         // 前台也初始化快捷代码
         if (!is_admin()) {
